@@ -1,63 +1,42 @@
 import './index.css';
 
-/* ================================== */
-/* ============= Arrays ============= */
-/* ================================== */
+/* ===================================== */
+/* ============= Functions ============= */
+/* ===================================== */
 
-const colors = new Array(3);
+// Method 1
+function greeting1( name ) {
+  return `Hello ${name}`;
+}
 
-colors[0] = 'Red';
-colors[1] = 'Blue';
-colors[2] = 'Orange';
+// Method 2
+const greeting2 = function( name ) {
+  return `Hello ${name}`;
+};
 
-// Appends new elements to the end of an array,
-// and returns the new length of the array.
-colors.push('Green');
+// Method 3
+const greeting3 = ( name ) => {
+  return `Hello ${name}`;
+};
 
-// Inserts new elements at the start of an array,
-// and returns the new length of the array.
-colors.unshift('Yellow');
+// Method 4
+const greeting4 = name => `Hello ${name}`;
 
-console.log( colors );
+// Method 5
+const generalGreeting = () => 'Hello World';
 
-// Removes the last element from an array and returns it
-colors.pop();
+// Method 6
+const getUser = (id) => ({
+  uid: id,
+  username: 'elixir',
+  email: 'elixir@gmail.com'
+});
 
-// Removes the first element from an array and returns it.
-// If the array is empty,
-// undefined is returned and the array is not modified.
-colors.shift();
+const user = getUser('ABC123');
 
-console.log( colors );
-
-console.log( "=".repeat(50) );
-
-const food = [
-  'Pizza',
-  'Hamburger',
-  'Hot Dog'
-];
-
-const food2 = [
-  ...food,
-  'Sushi',
-];
-
-console.log( food );
-console.log( food2 );
-
-console.log( "=".repeat(50) );
-
-const numbers = [ 2, 4, 6, 8 ];
-
-// Calls a defined callback function on each element of an array,
-// and returns an array that contains the results.
-const numbers2 = numbers.map(number => number * 2);
-
-/* Reference, old style
-const numbers2 = numbers.map(function(number) {
-  return number * 2
-});*/
-
-console.log( numbers );
-console.log( numbers2 );
+console.log(greeting1('Goku'));
+console.log(greeting2('Vejita'));
+console.log(greeting3('Piccolo'));
+console.log(greeting4('Bulma'));
+console.log(generalGreeting());
+console.table(user);
