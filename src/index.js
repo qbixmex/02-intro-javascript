@@ -1,41 +1,31 @@
 import './index.css';
 
-/* =================================== */
-/* ===== VARIABLES AND CONSTANTS ===== */
-/* =================================== */
+/* ================================== */
+/* ======== Template Strings ======== */
+/* ================================== */
 
-// A constant is a variable type that
-// won't change because it is inmutable.
-const year = 2022;
+const firstName = "Daniel";
+const lastName = "González Briseño";
 
-console.log('Year:', year);
+// Without Template Strings
+const fullName1 = firstName + " " + lastName;
 
-// A let is a variable type that
-// you can change because it is mutable.
-let quantity; // Initial assign by default is undefined
+console.log( 'Full Name 1:', fullName1 );
 
-console.log('Quantity:', quantity);
+console.log( '='.repeat(50) );
 
-quantity = 25; // You can change value
+// With Template Strings
+const fullName2 = `${firstName} ${lastName}`;
 
-console.log('Quantity:', quantity);
+console.log( 'Full Name 2:', fullName2 );
 
-console.log('='.repeat(50));
+console.log( '='.repeat(50) );
 
-// const and let variables are scoped to curly braces.
-if (true) {
-
-  const year = 2022;
-  console.log('Year:', year);
-
-  let quantity = 12;
-  console.log('Quantity:', quantity);
-
+function getGreeting(name) {
+  return 'Hello ' + name;
 }
 
-console.log('='.repeat(50));
+console.log( `Greeting: ${getGreeting('John')}` );
 
-// Note, this variables keeps its value
-// because variables inside curly braces
-// has different scope.
-console.log('Quantity:', quantity);
+console.log( '='.repeat(50) );
+
