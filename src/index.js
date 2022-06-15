@@ -1,40 +1,63 @@
 import './index.css';
 
-/* ================================= */
-/* ======== Literal Objects ======== */
-/* ================================= */
+/* ================================== */
+/* ============= Arrays ============= */
+/* ================================== */
 
-const person1 = {
-  firstName: 'Peter',
-  lastName: 'Park',
-  age: 18,
-  address: {
-    city: 'Queens',
-    street: 'main',
-    number: '1280',
-  },
-};
+const colors = new Array(3);
 
-console.log(person1);
+colors[0] = 'Red';
+colors[1] = 'Blue';
+colors[2] = 'Orange';
 
-const person2 = person1;
+// Appends new elements to the end of an array,
+// and returns the new length of the array.
+colors.push('Green');
 
-console.log(person2);
+// Inserts new elements at the start of an array,
+// and returns the new length of the array.
+colors.unshift('Yellow');
 
-person2.firstName = 'Alex';
+console.log( colors );
 
-console.log( '='.repeat(50) );
+// Removes the last element from an array and returns it
+colors.pop();
 
-console.log(person1);
-console.log(person2);
+// Removes the first element from an array and returns it.
+// If the array is empty,
+// undefined is returned and the array is not modified.
+colors.shift();
 
-console.log( '='.repeat(50) );
+console.log( colors );
 
-const person3 = { ...person1 }; // ... -> spread operator
+console.log( "=".repeat(50) );
 
-person3.firstName = 'James';
-person3.lastName = 'Stewart';
+const food = [
+  'Pizza',
+  'Hamburger',
+  'Hot Dog'
+];
 
-console.log(person1);
-console.log(person2);
-console.log(person3);
+const food2 = [
+  ...food,
+  'Sushi',
+];
+
+console.log( food );
+console.log( food2 );
+
+console.log( "=".repeat(50) );
+
+const numbers = [ 2, 4, 6, 8 ];
+
+// Calls a defined callback function on each element of an array,
+// and returns an array that contains the results.
+const numbers2 = numbers.map(number => number * 2);
+
+/* Reference, old style
+const numbers2 = numbers.map(function(number) {
+  return number * 2
+});*/
+
+console.log( numbers );
+console.log( numbers2 );
