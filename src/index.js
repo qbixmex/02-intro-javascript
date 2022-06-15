@@ -1,31 +1,40 @@
 import './index.css';
 
-/* ================================== */
-/* ======== Template Strings ======== */
-/* ================================== */
+/* ================================= */
+/* ======== Literal Objects ======== */
+/* ================================= */
 
-const firstName = "Daniel";
-const lastName = "González Briseño";
+const person1 = {
+  firstName: 'Peter',
+  lastName: 'Park',
+  age: 18,
+  address: {
+    city: 'Queens',
+    street: 'main',
+    number: '1280',
+  },
+};
 
-// Without Template Strings
-const fullName1 = firstName + " " + lastName;
+console.log(person1);
 
-console.log( 'Full Name 1:', fullName1 );
+const person2 = person1;
 
-console.log( '='.repeat(50) );
+console.log(person2);
 
-// With Template Strings
-const fullName2 = `${firstName} ${lastName}`;
-
-console.log( 'Full Name 2:', fullName2 );
-
-console.log( '='.repeat(50) );
-
-function getGreeting(name) {
-  return 'Hello ' + name;
-}
-
-console.log( `Greeting: ${getGreeting('John')}` );
+person2.firstName = 'Alex';
 
 console.log( '='.repeat(50) );
 
+console.log(person1);
+console.log(person2);
+
+console.log( '='.repeat(50) );
+
+const person3 = { ...person1 }; // ... -> spread operator
+
+person3.firstName = 'James';
+person3.lastName = 'Stewart';
+
+console.log(person1);
+console.log(person2);
+console.log(person3);
