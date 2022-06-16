@@ -14,16 +14,22 @@ const getHeroByIdAsync = (id) => {
   });
 }
 
-// Normal
-// getHeroByIdAsync(4)
-//   .then(hero => {
-//     console.log(hero);
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
+const getHero = async (id) => {
+  try {
+    const hero = await getHeroByIdAsync(id);
+    console.log(hero);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-// Alternative
-getHeroByIdAsync(12)
-  .then(console.log)
-  .catch(console.error);
+getHero(4);
+
+(async () => {
+  try {
+    const hero = await getHeroByIdAsync(8);
+    console.log(hero);
+  } catch (error) {
+    console.error(error);
+  }
+})();
