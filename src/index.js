@@ -1,35 +1,18 @@
 import './index.css';
-import { getHeroById } from './helpers';
 
-/* ==================================== */
-/* ============= PROMISES ============= */
-/* ==================================== */
+/* ===================================== */
+/* ============= FETCH API ============= */
+/* ===================================== */
 
-const getHeroByIdAsync = (id) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const hero = getHeroById(id);
-      hero ? resolve(hero) : reject('Cannot find Hero');
-    }, 1500);
-  });
-}
+const apiKey = 'oomM6BITz3sj9qYBePGd2lsEYVvEaQzc';
+const request = fetch(`https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`);
 
-const getHero = async (id) => {
-  try {
-    const hero = await getHeroByIdAsync(id);
-    console.log(hero);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-getHero(4);
-
-(async () => {
-  try {
-    const hero = await getHeroByIdAsync(8);
-    console.log(hero);
-  } catch (error) {
-    console.error(error);
-  }
-})();
+request
+  .then(response => response.json())
+  .then(({ data }) => {
+    const { url } = data.images.original;
+    const img = document.createElement('img');
+    img.src = url;
+    document.body.append(img);
+  })
+  .catch(console.error);
