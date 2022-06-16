@@ -4,95 +4,70 @@ import './index.css';
 /* ============= Destructuring ============= */
 /* ========================================= */
 
-const superhero = {
-  name: 'Bruce Wayne',
-  age: 45,
-  hero: 'Batman'
+console.log('-'.repeat(15), 'Numbers', '-'.repeat(15));
+
+const numbers = [2022, 1258.25, 65];
+
+const [ year, price, quantity ] = numbers;
+
+console.log('Year:', year);
+console.log('Price: $', price.toLocaleString());
+console.log('Quantity:', quantity);
+
+console.log('-'.repeat(15), 'Heroes', '-'.repeat(15));
+
+const heroes = ['Spiderman', 'Dr. Strange', 'Iron Man', 'Captain America'];
+
+const [ spiderman, drStrange, ironMan, captainAmerica ] = heroes;
+ 
+console.log('Spiderman:', spiderman);
+console.log('Dr. Strange:', drStrange.toLocaleString());
+console.log('IronMan:', ironMan);
+console.log('CaptainAmerica:', captainAmerica);
+
+console.log('-'.repeat(15), 'Mexican Food', '-'.repeat(15));
+
+const mexicanFood = ['Tacos', 'Tamales', 'Torta Ahogada', 'Pozole', 'Sopes'];
+
+const [ tacos, tamales, ...restFood ] = mexicanFood;
+ 
+console.log('Tacos:', tacos);
+console.log('Tamales:', tamales);
+console.table(restFood);
+
+console.log('-'.repeat(15), 'Return Array', '-'.repeat(15));
+
+const returnArray = () => {
+  return [ 'ABC', 1522.2575 ];
 };
 
-const { name, age, hero } = superhero;
-
-console.log( 'Name:', name );
-console.log( 'Age:', age );
-console.log( 'Hero:', hero );
-
-console.log( '='.repeat(40) );
-
-const student = {
-  name: 'Alex Stewart',
-  age: 22,
-  course: 'Javascript',
+const formatCurrency = (
+  value,
+  locale = 'es-US',
+  currency = 'USD',
+  minDigits = 2,
+  maxDigits = 2
+) => {
+  return value.toLocaleString(locale, {
+    style: 'currency',
+    currency: currency,
+    minimumFractionDigits: minDigits,
+    maximumFractionDigits: maxDigits
+  });
 };
 
-const getStudent = ({ name, age, course, active = false }) => {
-  return { name, age, course, active };
+const [ value1, value2 ] = returnArray();
+
+console.log( 'Value 1:', value1 );
+console.log( 'Value 2:',  formatCurrency(value2, 'es-MX', 'MXN'));
+
+console.log('-'.repeat(18), 'STATE', '-'.repeat(18));
+
+const state = (value = '') => {
+  return [ value.toUpperCase(), () => 'Lorem Ipsum' ];
 };
 
-const studentRetrieved = getStudent(student);
+const [ language, setLanguage ] = state('javascript');
 
-console.table( studentRetrieved );
-
-console.log( '='.repeat(40) );
-
-const context = ({
-  name,
-  description,
-  price,
-  active = false,
-  sizes: {
-    width,
-    height,
-    weight
-  }
-}) => {
-  return {
-    'product-name': name,
-    'product-description': description,
-    'product-price': price,
-    'product-status': active,
-    'product-sizes': {
-      'product-width': width,
-      'product-height': height,
-      'product-weight': weight,
-    },
-  };
-};
-
-const keys = [
-  'product-name',
-  'product-description',
-  'product-price',
-  'product-status',
-];
-
-const {
-  [keys[0]]: productName,
-  [keys[1]]: productDescription,
-  [keys[2]]: productPrice,
-  [keys[3]]: productStatus,
-  'product-sizes': productSizes
-} = context({
-  name: 'Play Station 5',
-  description: 'Lorem ipsum dolor dolem',
-  price: 1135.25,
-  sizes: {
-    width: 4,
-    height: 8,
-    weight: 22
-  }
-});
-
-const {
-  'product-width': productWidth,
-  'product-height': productHeight,
-  'product-weight': productWeight,
-} = productSizes;
-
-console.log('Product Name:', productName);
-console.log('Product Description:', productDescription);
-console.log('Product Price: $', productPrice.toLocaleString());
-console.log('Product Status:', productStatus);
-console.log('-'.repeat(10), 'Product Sizes', '-'.repeat(10));
-console.log('Product Width:', productWidth);
-console.log('Product Height:', productHeight);
-console.log('Product Weight:', productWeight);
+console.log('Language:', language);
+console.log('Set Language:', setLanguage());
