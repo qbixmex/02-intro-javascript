@@ -1,0 +1,29 @@
+const heroes = [
+  {
+    id: 1,
+    name: 'Batman',
+    studio: 'DC'
+  },
+  {
+    id: 2,
+    name: 'Spiderman',
+    studio: 'Marvel'
+  },
+  {
+    id: 3,
+    name: 'Superman',
+    studio: 'DC'
+  },
+  {
+    id: 4,
+    name: 'Flash',
+    studio: 'DC'
+  },
+  {
+    id: 5,
+    name: 'Wolverine',
+    studio: 'Marvel'
+  },
+];
+
+export default heroes;

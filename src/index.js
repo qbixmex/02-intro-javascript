@@ -1,73 +1,39 @@
+import heroesArray from './data/heroes';
 import './index.css';
 
-/* ========================================= */
-/* ============= Destructuring ============= */
-/* ========================================= */
+/* ========================================== */
+/* ============= IMPORT, EXPORT ============= */
+/* ========================================== */
 
-console.log('-'.repeat(15), 'Numbers', '-'.repeat(15));
+console.log( '='.repeat(15), 'Heroes', '='.repeat(15) );
 
-const numbers = [2022, 1258.25, 65];
+console.table(heroesArray);
 
-const [ year, price, quantity ] = numbers;
+console.log( '='.repeat(14), 'GET HERO', '='.repeat(14) );
 
-console.log('Year:', year);
-console.log('Price: $', price.toLocaleString());
-console.log('Quantity:', quantity);
-
-console.log('-'.repeat(15), 'Heroes', '-'.repeat(15));
-
-const heroes = ['Spiderman', 'Dr. Strange', 'Iron Man', 'Captain America'];
-
-const [ spiderman, drStrange, ironMan, captainAmerica ] = heroes;
- 
-console.log('Spiderman:', spiderman);
-console.log('Dr. Strange:', drStrange.toLocaleString());
-console.log('IronMan:', ironMan);
-console.log('CaptainAmerica:', captainAmerica);
-
-console.log('-'.repeat(15), 'Mexican Food', '-'.repeat(15));
-
-const mexicanFood = ['Tacos', 'Tamales', 'Torta Ahogada', 'Pozole', 'Sopes'];
-
-const [ tacos, tamales, ...restFood ] = mexicanFood;
- 
-console.log('Tacos:', tacos);
-console.log('Tamales:', tamales);
-console.table(restFood);
-
-console.log('-'.repeat(15), 'Return Array', '-'.repeat(15));
-
-const returnArray = () => {
-  return [ 'ABC', 1522.2575 ];
+/**
+ * Get a hero object by id
+ * @param {number} id Hero Identifier
+ * @returns {{ id: number, name: string, studio: string }} A hero object
+ */
+const getHeroById = (id) => {
+  // Returns the value of the first element in the array
+  // where predicate is true, or undefined instead.
+  return heroesArray.find((hero) => hero.id === id);
 };
 
-const formatCurrency = (
-  value,
-  locale = 'es-US',
-  currency = 'USD',
-  minDigits = 2,
-  maxDigits = 2
-) => {
-  return value.toLocaleString(locale, {
-    style: 'currency',
-    currency: currency,
-    minimumFractionDigits: minDigits,
-    maximumFractionDigits: maxDigits
-  });
+console.table(getHeroById(2));
+
+console.log( '='.repeat(10), 'GET HEROES BY STUDIO', '='.repeat(10) );
+
+/**
+ * Get a hero object by studio
+ * @param {string} studio Hero Studio, example: 'DC' or 'Marvel'
+ * @returns {{ id: number, name: string, studio: string }} A hero object
+ */
+const getHeroesByStudio = (studio) => {
+  return heroesArray.filter((hero) => hero.studio === studio);
 };
 
-const [ value1, value2 ] = returnArray();
-
-console.log( 'Value 1:', value1 );
-console.log( 'Value 2:',  formatCurrency(value2, 'es-MX', 'MXN'));
-
-console.log('-'.repeat(18), 'STATE', '-'.repeat(18));
-
-const state = (value = '') => {
-  return [ value.toUpperCase(), () => 'Lorem Ipsum' ];
-};
-
-const [ language, setLanguage ] = state('javascript');
-
-console.log('Language:', language);
-console.log('Set Language:', setLanguage());
+console.table(getHeroesByStudio('DC'));
+console.table(getHeroesByStudio('Marvel'));
