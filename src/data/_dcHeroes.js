@@ -1,13 +1,13 @@
-const heroes = [
+const dcHeroes = [
   {
     id: 1,
-    name: 'Batman',
+    name: 'Wonder Woman',
     studio: 'DC'
   },
   {
     id: 2,
-    name: 'Spiderman',
-    studio: 'Marvel'
+    name: 'Batman',
+    studio: 'DC'
   },
   {
     id: 3,
@@ -16,14 +16,14 @@ const heroes = [
   },
   {
     id: 4,
-    name: 'Flash',
+    name: 'Green Lantern',
     studio: 'DC'
   },
   {
     id: 5,
-    name: 'Wolverine',
-    studio: 'Marvel'
+    name: 'Flash',
+    studio: 'DC'
   },
 ];
 
-export default heroes;
+export { dcHeroes };
