@@ -1,46 +1,33 @@
 import './index.css';
 
-/* ===================================== */
-/* ============= FETCH API ============= */
-/* ===================================== */
+/* ============================================ */
+/* ============= TERNARI OPERATOR ============= */
+/* ============================================ */
 
-const getImagePromise = (exists = true) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      exists 
-        ? resolve('https://somedomain.com')
-        : reject('Domain does not exist!')
-    }, 1500);
-  });
-};
+const active1 = true;
 
-getImagePromise()
-  .then((url) => {
-    console.log('-'.repeat(12), 'THEN - CATCH', '-'.repeat(12));
-    console.log('URL:', url)
-  })
-  .catch(console.error);
+let message1 = '';
 
-  
-const getGiphy = async () => {
-  try {
+if (active1) {
+  message1 = 'Active'
+} else {
+  message1 = 'Inactive'
+}
 
-    const apiKey = 'oomM6BITz3sj9qYBePGd2lsEYVvEaQzc';
-    const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`);
-    const { data } = await response.json();
-  
-    const { url } = data.images.original;
-    
-    return url;
+console.log(message1);
 
-  } catch (error) {
-    console.error(error);
-  }
-};
+/* ============================================ */
 
-(async() => {
-  const url = await getGiphy();
-  const img = document.createElement('img');
-  img.src = url;
-  document.body.append(img);
-})();
+const active2 = false;
+
+const message2 = active2 ? 'Active' : 'Inactive';
+
+console.log(message2);
+
+/* ============================================ */
+
+const active3 = false;
+
+const message3 = active3 && 'Active';
+
+console.log(message3);
